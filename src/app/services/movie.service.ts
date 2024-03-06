@@ -39,7 +39,7 @@ export class MovieService {
 
       return (await data.json()) ?? undefined;
     } catch (error) {
-      this.snackbarService.show('Error fetching movie details:', '#db4a4a');
+      this.snackbarService.show('Erro ao chamar movie details:', '#db4a4a');
       this.router.navigate(['/']);
       return undefined;
     }

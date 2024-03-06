@@ -27,7 +27,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
       <section class="listing-features">
         <ul>
           <ng-container *ngFor="let property of movieProperties">
-            <li *ngIf="property !== 'Ratings'">
+            <li *ngIf="property !== 'Ratings' && property !== 'Poster'">
               <b>{{ property }}:</b> {{ getProperty(movie, property) || 'N/A' }}
             </li>
             <li *ngIf="property === 'Ratings'">
