@@ -1,7 +1,8 @@
 .listing {
     background: var(--accent-color);
     border-radius: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 18px;
+    text-align: center;
 }
 
 @mixin box-shadow {
@@ -30,6 +31,15 @@
     margin-bottom: 16px;
 }
 
+a {
+    text-decoration: none;
+    padding: 8px;
+    background: #242323;
+    color: #f6c800;
+    width: 100%;
+    box-shadow: 0px 15px 16px -6px rgba(0, 0, 0, 0.75);
+}
+
 .listing-infos {
     padding: var(--content-padding) 0;
     color: var(--secondary-color);
@@ -38,19 +48,11 @@
         @include belt;
     }
     p {
+        margin-left: 8px;
         font-weight: bold;
     }
     h5 {
+        margin-left: 8px;
         font-size: 0.7rem;
     }
-}
-
-section.listing a {
-    padding-left: 20px;
-    text-decoration: none;
-    color: var(--primary-color);
-}
-section.listing a::after {
-    content: "\203A";
-    margin-left: 5px;
 }

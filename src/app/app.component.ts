@@ -2,11 +2,12 @@ import { NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgOptimizedImage, HomeComponent],
+  imports: [RouterOutlet, NgOptimizedImage, HomeComponent, RouterModule],
   template: `
     <main>
       <header class="brand-name">
@@ -20,7 +21,7 @@ import { HomeComponent } from './components/home/home.component';
         />
       </header>
       <section class="content">
-        <app-home></app-home>
+        <router-outlet></router-outlet>
       </section>
     </main>
   `,
