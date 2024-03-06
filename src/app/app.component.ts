@@ -7,16 +7,15 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgOptimizedImage, HomeComponent, RouterModule],
+  imports: [RouterOutlet, HomeComponent, RouterModule],
   template: `
     <main>
       <header class="brand-name">
         <img
-          ngSrc="assets/logo-imdb.png"
+          src="assets/logo-imdb.png"
           width="100"
           height="50"
-          priority
-          alt=""
+          alt="Logo Imdb"
           class="brand-logo"
         />
       </header>

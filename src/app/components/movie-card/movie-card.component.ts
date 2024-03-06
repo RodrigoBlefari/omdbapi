@@ -10,7 +10,7 @@ import { RouterModule } from '@angular/router';
   template: `
     <section class="listing">
       <img
-        ngSrc="{{ movie.Poster }}"
+        [ngSrc]="movie.Poster"
         alt="Imagem do filme {{ movie.Title }}"
         class="listing-photo"
         priority

@@ -1,20 +1,61 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MovieService } from '../../services/movie.service';
+import { Movie } from '../../movie';
 
 @Component({
   selector: 'app-movie-details',
   standalone: true,
-  imports: [CommonModule],
-  template: ` <p>movie-details works!</p> `,
+  imports: [CommonModule, NgOptimizedImage],
+  template: `
+    <article>
+      <section>
+        <img
+          class="listing-photo"
+          src="{{ movie?.Poster }}"
+          width="100"
+          height="100"
+        />
+      </section>
+      <section class="listing-description">
+        <h2 class="listing-heading">{{ movie?.Title }}</h2>
+        <p class="listing-movie">{{ movie?.Plot }}</p>
+      </section>
+      <h2 class="section-heading">Detalhes do Filme</h2>
+      <section class="listing-features">
+        <ul>
+          <li>
+            <b>Languages:</b>
+
+            {{ movie?.Language }}
+          </li>
+          <li>
+            <b>Genres:</b>
+
+            {{ movie?.Genre }}
+          </li>
+          <li>
+            <b>Plot:</b>
+
+            {{ movie?.Plot }}
+          </li>
+        </ul>
+      </section>
+    </article>
+  `,
   styleUrl: './movie-details.component.scss',
 })
 export class MovieDetailsComponent {
+  movie!: Movie | undefined;
   route: ActivatedRoute = inject(ActivatedRoute);
-  imdbID: string;
+  movieServcie: MovieService = inject(MovieService);
 
   constructor() {
-    this.imdbID = this.route.snapshot.params['id'];
-    console.log('imdbID: ' + this.imdbID);
+    const imdbID = this.route.snapshot.params['id'];
+
+    this.movie = this.movieServcie.getMovieByImdbID(imdbID);
+
+    console.log('imdbID: ', this.movie);
   }
 }

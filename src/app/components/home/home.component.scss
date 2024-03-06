@@ -3,13 +3,15 @@
     column-gap: 14px;
     row-gap: 14px;
     grid-template-columns: repeat(auto-fill, minmax(400px, 400px));
-    margin-top: 16px;
     justify-content: space-around;
+    padding: var(--content-padding);
 }
 
 .form-filter {
     display: flex;
     justify-content: space-between;
+    padding: var(--content-padding);
+    padding-bottom: 0;
 }
 
 input[type="text"] {
