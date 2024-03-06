@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../../services/movie.service';
 import { Movie } from '../../movie';
@@ -43,22 +43,33 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
         </ul>
       </section>
     </article>
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
   `,
   styleUrl: './movie-details.component.scss',
 })
 export class MovieDetailsComponent {
   movie: Movie | undefined;
   movieProperties: string[] = [];
-  route: ActivatedRoute = inject(ActivatedRoute);
-  movieService: MovieService = inject(MovieService);
+  errorMessage: string | undefined;
 
-  constructor() {
+  constructor(
+    private route: ActivatedRoute,
+    private movieService: MovieService
+  ) {
     const imdbID = this.route.snapshot.params['imdbID'];
 
-    this.movieService.getMovieByImdbID(imdbID).then((movie) => {
-      this.movie = movie;
-      this.movieProperties = Object.keys(movie || {});
-    });
+    this.movieService.getMovieByImdbID(imdbID).then(
+      (movie) => {
+        this.movie = movie;
+        this.movieProperties = Object.keys(movie || {});
+      },
+      (error) => {
+        this.errorMessage = 'Erro ao carregar os detalhes do filme.';
+        console.error('Erro ao carregar detalhes do filme:', error);
+      }
+    );
   }
 
   getProperty(obj: any, key: string): any {

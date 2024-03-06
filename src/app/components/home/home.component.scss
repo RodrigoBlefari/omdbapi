@@ -44,7 +44,7 @@ button {
 }
 
 .square {
-    border-radius: 8px;
+    border-radius: 14px;
 }
 
 .round {
@@ -55,11 +55,17 @@ button {
     .results {
         grid-template-columns: repeat(2, 1fr);
     }
+}
+
+@media (min-width: 769px) {
+    .form-filter {
+        display: flex;
+        justify-content: center;
+    }
     input[type="text"] {
         width: 70%;
     }
 }
-
 @media (max-width: 499px) {
     .results {
         grid-template-columns: 1fr;

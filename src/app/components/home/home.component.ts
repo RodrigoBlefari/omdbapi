@@ -32,6 +32,9 @@ import { MovieService } from '../../services/movie.service';
         [movie]="movie"
         [showImage]="showImage"
       ></app-movie-card>
+      <h2 *ngIf="filterResults.length === 0">
+        Nenhum filme encontrado com título ' {{ filter.value }} '
+      </h2>
     </section>
   `,
   styleUrl: './home.component.scss',
