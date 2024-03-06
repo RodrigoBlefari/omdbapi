@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { Movie } from '../../movie';
 import { CommonModule } from '@angular/common';
@@ -10,28 +10,41 @@ import { MovieService } from '../../services/movie.service';
   imports: [MovieCardComponent, CommonModule],
   template: `
     <section>
-      <form class="form-filter">
-        <input type="text" placeholder="Filtro por título" #filter />
-        <button type="primary" (click)="filterResults(filter.value)">
-          Buscar
+      <section class="form-filter">
+        <input
+          type="text"
+          (input)="filterResults(filter.value)"
+          placeholder="Filtro por título"
+          #filter
+        />
+        <button
+          [ngClass]="showImage ? 'round' : ' square'"
+          type="button"
+          (click)="toggleSimpleView()"
+        >
+          {{ showImage ? '[ ]' : '|||' }}
         </button>
-      </form>
+      </section>
     </section>
     <section class="results">
       <app-movie-card
         *ngFor="let movie of filteredMovieList"
         [movie]="movie"
+        [showImage]="showImage"
       ></app-movie-card>
     </section>
   `,
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   filteredMovieList!: Movie[];
   movieList: Movie[] = [];
+  showImage: boolean = true;
   movieService: MovieService = inject(MovieService);
 
-  constructor() {
+  constructor() {}
+
+  ngOnInit() {
     this.movieService.getMovieList().then((movieList) => {
       this.movieList = movieList;
       this.filteredMovieList = movieList;
@@ -42,5 +55,10 @@ export class HomeComponent {
     this.filteredMovieList = this.movieList.filter((movie) =>
       movie?.Title.toLowerCase().includes(filter.toLowerCase())
     );
+  }
+
+  toggleSimpleView() {
+    this.showImage = !this.showImage;
+    this.filterResults('');
   }
 }

@@ -3,7 +3,7 @@
     column-gap: 14px;
     row-gap: 14px;
     grid-template-columns: repeat(auto-fill, minmax(400px, 400px));
-    justify-content: space-around;
+    justify-content: center;
     padding: var(--content-padding);
 }
 
@@ -18,17 +18,37 @@ input[type="text"] {
     border: solid 1px var(--primary-color);
     padding: 10px;
     border-radius: 8px;
-    margin-right: 4px;
     display: inline-block;
     width: 100%;
+    cursor: pointer;
+    margin-right: 16px;
 }
 
 button {
-    padding: 10px;
+    padding: 0px;
     border: solid 1px var(--primary-color);
     background: var(--primary-color);
     color: var(--secondary-color);
+    cursor: pointer;
+    width: 50px;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.square {
     border-radius: 8px;
+}
+
+.round {
+    border-radius: 2px;
 }
 
 @media (min-width: 500px) and (max-width: 768px) {

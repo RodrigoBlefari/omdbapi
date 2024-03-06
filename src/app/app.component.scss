@@ -7,7 +7,14 @@ header {
     background: var(--background-dark);
 }
 
+.brand-logo {
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
 .content {
     background: var(--background-secondary);
-    // height: 100vh;
 }

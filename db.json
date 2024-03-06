@@ -151,6 +151,64 @@
             "Production": "N/A",
             "Website": "N/A",
             "Response": "True"
+        },
+        {
+            "Title": "Trap",
+            "Year": "2022–2023",
+            "Rated": "N/A",
+            "Released": "19 Oct 2022",
+            "Runtime": "N/A",
+            "Genre": "Drama",
+            "Director": "N/A",
+            "Writer": "N/A",
+            "Actors": "Talat Bulut, Akin Akinözü, Bensu Soral",
+            "Plot": "In a world where it is hard to tell who is good and who is bad, what is real and what is fake, these three brothers, united by a common goal, will discover that they are not as connected as they thought.",
+            "Language": "Turkish",
+            "Country": "Turkey",
+            "Awards": "N/A",
+            "Poster": "https://m.media-amazon.com/images/M/MV5BNWIxYWFlODgtYjY2Yi00Mjc4LWE4ODAtYmYxNzcwNDc0ZmEzXkEyXkFqcGdeQXVyMTI4NTc5ODc5._V1_SX300.jpg",
+            "Ratings": [
+                {
+                    "Source": "Internet Movie Database",
+                    "Value": "6.9/10"
+                }
+            ],
+            "Metascore": "N/A",
+            "imdbRating": "6.9",
+            "imdbVotes": "753",
+            "imdbID": "tt21741266",
+            "Type": "series",
+            "totalSeasons": "1",
+            "Response": "True"
+        },
+        {
+            "Title": "Bang",
+            "Year": "2017–",
+            "Rated": "N/A",
+            "Released": "10 Sep 2017",
+            "Runtime": "60 min",
+            "Genre": "Crime, Drama, Mystery",
+            "Director": "N/A",
+            "Writer": "Roger Williams",
+            "Actors": "Catrin Stewart, Jack Parry-Jones, Suzanne Packer",
+            "Plot": "Sam's life changes when he comes in possession of a gun. Complicating things is the fact that his sister Gina is a police officer.",
+            "Language": "Welsh, English",
+            "Country": "United Kingdom",
+            "Awards": "3 wins & 6 nominations",
+            "Poster": "https://m.media-amazon.com/images/M/MV5BZDQyZmZiYWUtMTM5NC00YjFiLTgxM2YtOTQxNTA4NzkxZWIzXkEyXkFqcGdeQXVyMjIyMzg0MzY@._V1_SX300.jpg",
+            "Ratings": [
+                {
+                    "Source": "Internet Movie Database",
+                    "Value": "6.7/10"
+                }
+            ],
+            "Metascore": "N/A",
+            "imdbRating": "6.7",
+            "imdbVotes": "604",
+            "imdbID": "tt7194490",
+            "Type": "series",
+            "totalSeasons": "2",
+            "Response": "True"
         }
     ]
 }
