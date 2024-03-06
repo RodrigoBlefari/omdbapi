@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
   template: `
     <main>
       <header class="brand-name">
+        <link rel="preconnect" href="https://m.media-amazon.com" />
         <img
           src="assets/logo-imdb.png"
           width="100"

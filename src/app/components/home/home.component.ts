@@ -11,13 +11,15 @@ import { MovieService } from '../../services/movie.service';
   template: `
     <section>
       <form class="form-filter">
-        <input type="text" placeholder="Filtro por título" />
-        <button type="primary">Buscar</button>
+        <input type="text" placeholder="Filtro por título" #filter />
+        <button type="primary" (click)="filterResults(filter.value)">
+          Buscar
+        </button>
       </form>
     </section>
     <section class="results">
       <app-movie-card
-        *ngFor="let movie of movieList"
+        *ngFor="let movie of filteredMovieList"
         [movie]="movie"
       ></app-movie-card>
     </section>
@@ -25,10 +27,20 @@ import { MovieService } from '../../services/movie.service';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
+  filteredMovieList!: Movie[];
   movieList: Movie[] = [];
   movieService: MovieService = inject(MovieService);
 
   constructor() {
-    this.movieList = this.movieService.getMovieList();
+    this.movieService.getMovieList().then((movieList) => {
+      this.movieList = movieList;
+      this.filteredMovieList = movieList;
+    });
+  }
+
+  filterResults(filter: string) {
+    this.filteredMovieList = this.movieList.filter((movie) =>
+      movie?.Title.toLowerCase().includes(filter.toLowerCase())
+    );
   }
 }

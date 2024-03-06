@@ -29,7 +29,4 @@ import { RouterModule } from '@angular/router';
 })
 export class MovieCardComponent {
   @Input() movie!: Movie;
-  constructor() {
-    console.log('aki', this.movie);
-  }
 }

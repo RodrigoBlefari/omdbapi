@@ -52,10 +52,10 @@ export class MovieDetailsComponent {
   movieServcie: MovieService = inject(MovieService);
 
   constructor() {
-    const imdbID = this.route.snapshot.params['id'];
+    const imdbID = this.route.snapshot.params['imdbID'];
 
-    this.movie = this.movieServcie.getMovieByImdbID(imdbID);
-
-    console.log('imdbID: ', this.movie);
+    this.movieServcie.getMovieByImdbID(imdbID).then((movie) => {
+      this.movie = movie;
+    });
   }
 }
