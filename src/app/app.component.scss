@@ -1,0 +1,13 @@
+header {
+    padding: 8px;
+    box-shadow: 0px 5px 25px var(--shadow-color);
+
+    display: flex;
+    justify-content: center;
+    background: var(--background-dark);
+}
+
+.content {
+    background: var(--background-secondary);
+    padding: var(--content-padding);
+}

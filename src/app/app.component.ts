@@ -14,8 +14,8 @@ import { HomeComponent } from './components/home/home.component';
           ngSrc="assets/logo-imdb.png"
           width="100"
           height="50"
-          alt=""
           priority
+          alt=""
           class="brand-logo"
         />
       </header>

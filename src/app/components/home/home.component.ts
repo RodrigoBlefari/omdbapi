@@ -1,26 +1,30 @@
 import { Component } from '@angular/core';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { Movie } from '../../movie';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MovieCardComponent],
+  imports: [MovieCardComponent, CommonModule],
   template: `
     <section>
-      <form>
+      <form class="form-filter">
         <input type="text" placeholder="Filtro por título" />
         <button type="primary">Buscar</button>
       </form>
     </section>
     <section class="results">
-      <app-movie-card></app-movie-card>
+      <app-movie-card
+        *ngFor="let movie of movieList"
+        [movie]="movie"
+      ></app-movie-card>
     </section>
   `,
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  movideCardList: Movie[] = [
+  movieList: Movie[] = [
     {
       Title: 'War',
       Year: '2007',

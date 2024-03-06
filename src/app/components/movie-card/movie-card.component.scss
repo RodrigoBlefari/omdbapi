@@ -1,0 +1,56 @@
+.listing {
+    background: var(--accent-color);
+    border-radius: 30px;
+    padding-bottom: 30px;
+}
+
+@mixin box-shadow {
+    -webkit-box-shadow: 0px 15px 16px -6px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 15px 16px -6px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 15px 16px -6px rgba(0, 0, 0, 0.75);
+}
+
+@mixin belt {
+    background: var(--primary-color);
+    padding: 8px;
+    background: var(--background-secondary);
+    @include box-shadow;
+    color: var(--primary-color);
+}
+
+.listing-photo {
+    height: 250px;
+    width: 100%;
+    object-fit: fill;
+    @include box-shadow;
+}
+
+.listing-heading {
+    color: var(--secondary-color);
+    margin-bottom: 16px;
+}
+
+.listing-infos {
+    padding: var(--content-padding) 0;
+    color: var(--secondary-color);
+
+    h2 {
+        @include belt;
+    }
+    p {
+        font-weight: bold;
+    }
+    h5 {
+        font-size: 0.7rem;
+    }
+}
+
+section.listing a {
+    padding-left: 20px;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+section.listing a::after {
+    content: "\203A";
+    margin-left: 5px;
+}
