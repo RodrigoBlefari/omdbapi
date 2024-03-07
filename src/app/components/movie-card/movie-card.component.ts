@@ -1,16 +1,16 @@
-import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Movie, Rating } from '../../movie';
+import { Movie } from '../../movie';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
+import { Pipe, PipeTransform } from '@angular/core';
+import { StarsPipe } from '../../pipes/stars-pipe.pipe';
 @Component({
   selector: 'app-movie-card',
   standalone: true,
-  imports: [CommonModule, RouterModule],
   template: `
     <section class="listing">
       <img
-        *ngIf="showImage"
+        *ngIf="showImage && movie?.Poster"
         [src]="movie.Poster"
         alt="Imagem do filme {{ movie.Title }}"
         class="listing-photo"
@@ -21,27 +21,25 @@ import { RouterModule } from '@angular/router';
         <h2 class="listing-heading">
           {{ movie.Title }}
           <br />
-          <span class="stars" *ngIf="movie.Ratings && movie.Ratings.length > 0">
-            <span *ngFor="let star of stars(movie.Ratings[0]?.Value || '')">
-              {{ star }}
-            </span>
+          <span
+            class="stars"
+            *ngIf="movie?.Ratings && movie.Ratings.length > 0"
+          >
+            {{ movie.Ratings[0].Value | stars }}
           </span>
         </h2>
         <p>Gênero: {{ movie.Genre }}</p>
         <h5>Audio: {{ movie.Language }}</h5>
       </article>
-      <a [routerLink]="['/details', movie.imdbID]">Ver detalhes</a>
+      <a *ngIf="movie?.imdbID" [routerLink]="['/details', movie.imdbID]"
+        >Ver detalhes</a
+      >
     </section>
   `,
   styleUrl: './movie-card.component.scss',
+  imports: [CommonModule, RouterModule, StarsPipe],
 })
 export class MovieCardComponent {
   @Input() movie!: Movie;
   @Input() showImage: boolean = true;
-
-  stars(rating: string): string[] {
-    if (!rating) return [];
-    const numStars = Math.round(parseFloat(rating) / 2);
-    return Array(numStars).fill('⭐️');
-  }
 }
