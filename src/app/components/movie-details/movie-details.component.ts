@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../../services/movie.service';
 import { Movie } from '../../movie';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { StarsPipe } from '../../pipes/stars-pipe.pipe';
 import { SnackbarService } from '../../services/snackbar-service.service';
 
@@ -14,7 +14,7 @@ import { SnackbarService } from '../../services/snackbar-service.service';
       <section>
         <img
           class="listing-photo"
-          ngSrc="{{ movie.Poster }}"
+          src="{{ movie.Poster }}"
           alt="Foto do filme {{ movie.Title }}"
           width="100"
           priority
@@ -50,7 +50,7 @@ import { SnackbarService } from '../../services/snackbar-service.service';
     </div>
   `,
   styleUrl: './movie-details.component.scss',
-  imports: [CommonModule, NgOptimizedImage, StarsPipe],
+  imports: [CommonModule, StarsPipe],
 })
 export class MovieDetailsComponent {
   movie: Movie | undefined;
