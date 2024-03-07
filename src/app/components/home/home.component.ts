@@ -8,6 +8,7 @@ import { MovieService } from '../../services/movie.service';
   selector: 'app-home',
   standalone: true,
   imports: [MovieCardComponent, CommonModule],
+
   template: `
     <section>
       <section class="form-filter">
@@ -16,6 +17,7 @@ import { MovieService } from '../../services/movie.service';
           (input)="filterResults(filter.value)"
           placeholder="Filtro por título"
           #filter
+          id="filter"
         />
         <button
           [ngClass]="showImage ? 'round' : ' square'"
@@ -65,3 +67,10 @@ export class HomeComponent implements OnInit {
     this.filterResults('');
   }
 }
+
+//describe de check html, Chegar se input esta com id filter, testar se botão esta clicavel
+//describe Should Filter form. testar o filtro da seguinte forma:
+//Criar mock de uma lista de Movie[] com base nos passados anteriormente,
+//depois de adicionar o valor do primeiro movie[0] title apenas as 3 primeiras letras
+// verificar se função filterresults foi chamada com esse valor
+//e verificar se o valor o valor inserido no filter contain dentro do title dos que estão no filteredMovieList
