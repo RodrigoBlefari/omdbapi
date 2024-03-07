@@ -1,19 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../../services/movie.service';
 import { Movie } from '../../movie';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { StarsPipe } from '../../pipes/stars-pipe.pipe';
+import { SnackbarService } from '../../services/snackbar-service.service';
 
 @Component({
   selector: 'app-movie-details',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage],
   template: `
     <article *ngIf="movie">
       <section>
         <img
           class="listing-photo"
           ngSrc="{{ movie.Poster }}"
+          alt="Foto do filme {{ movie.Title }}"
           width="100"
           priority
           height="100"
@@ -35,7 +37,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
               <ng-container *ngFor="let rating of movie[property]">
                 {{ rating.Source }}: {{ rating.Value }}
                 <span *ngIf="rating.Source === 'Internet Movie Database'">
-                  {{ stars(rating.Value) }}
+                  {{ rating.Value | stars }}
                 </span>
               </ng-container>
             </li>
@@ -48,16 +50,17 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
     </div>
   `,
   styleUrl: './movie-details.component.scss',
+  imports: [CommonModule, NgOptimizedImage, StarsPipe],
 })
 export class MovieDetailsComponent {
   movie: Movie | undefined;
   movieProperties: string[] = [];
   errorMessage: string | undefined;
+  route: ActivatedRoute = inject(ActivatedRoute);
+  movieService: MovieService = inject(MovieService);
+  snackbarService: SnackbarService = inject(SnackbarService);
 
-  constructor(
-    private route: ActivatedRoute,
-    private movieService: MovieService
-  ) {
+  constructor() {
     const imdbID = this.route.snapshot.params['imdbID'];
 
     this.movieService.getMovieByImdbID(imdbID).then(
@@ -66,19 +69,15 @@ export class MovieDetailsComponent {
         this.movieProperties = Object.keys(movie || {});
       },
       (error) => {
-        this.errorMessage = 'Erro ao carregar os detalhes do filme.';
-        console.error('Erro ao carregar detalhes do filme:', error);
+        this.snackbarService.show(
+          `Acesso não Autorizado, verifique apiKey${error.message}`,
+          '#db4a4a'
+        );
       }
     );
   }
 
-  getProperty(obj: any, key: string): any {
+  getProperty(obj: Movie, key: string): string {
     return Object.getOwnPropertyDescriptor(obj, key)?.value;
-  }
-
-  stars(ratingValue: string): string {
-    const ratingNumber = parseFloat(ratingValue);
-    const numberOfStars = Math.round(ratingNumber / 2);
-    return '⭐️'.repeat(numberOfStars);
   }
 }

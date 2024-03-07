@@ -38,7 +38,6 @@ article {
     margin-bottom: 15px;
 }
 
-.listing-features,
 .listing-movie {
     padding: 8px;
 }
@@ -49,6 +48,8 @@ article {
 
 li {
     margin-bottom: 4px;
+    border-bottom: 2px solid #0000001c;
+    padding: 4px;
 }
 
 .listing-apply .section-heading {

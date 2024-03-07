@@ -12,7 +12,7 @@ describe('Should Movie Service tested?', () => {
   let snackbarService: SnackbarService;
   let router: Router;
   let fetchSpy: jasmine.Spy;
-  let mockMovies: Movie[] = [
+  const mockMovies: Movie[] = [
     {
       Title: 'War',
       Year: '2007',

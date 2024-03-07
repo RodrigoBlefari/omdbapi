@@ -9,7 +9,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 describe('Should HomeComponent tested?', () => {
   let fixture: ComponentFixture<HomeComponent>;
   let component: HomeComponent;
-  let mockMovies: Movie[] = [
+  const mockMovies: Movie[] = [
     {
       Title: 'War',
       Year: '2007',

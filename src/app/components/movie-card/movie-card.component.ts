@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { Movie } from '../../movie';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Pipe, PipeTransform } from '@angular/core';
 import { StarsPipe } from '../../pipes/stars-pipe.pipe';
 @Component({
   selector: 'app-movie-card',

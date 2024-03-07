@@ -6,7 +6,7 @@ import { Router, RouterModule, RouterOutlet } from '@angular/router';
 
 describe('Should app-component tested?', () => {
   let fixture: ComponentFixture<AppComponent>;
-  let component: AppComponent;
+  // let component: AppComponent;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -24,7 +24,7 @@ describe('Should app-component tested?', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
-    component = fixture.componentInstance;
+    // component = fixture.componentInstance;
   });
 
   describe('Imports', () => {
