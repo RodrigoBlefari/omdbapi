@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { RouterModule } from '@angular/router';
@@ -29,5 +29,9 @@ import { SnackbarService } from './services/snackbar-service.service';
 })
 export class AppComponent {
   title = 'omdbapi';
-  snackbarService: SnackbarService = inject(SnackbarService);
+  snackbarService: SnackbarService;
+
+  constructor() {
+    this.snackbarService = new SnackbarService();
+  }
 }

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { Movie } from '../movie';
 
-describe('MovieService', () => {
+describe('Should Movie Service tested?', () => {
   let service: MovieService;
   let snackbarService: SnackbarService;
   let router: Router;
@@ -51,7 +51,6 @@ describe('MovieService', () => {
       Response: 'True',
     },
   ];
-
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
